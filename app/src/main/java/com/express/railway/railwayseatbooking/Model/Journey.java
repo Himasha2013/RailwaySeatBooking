@@ -3,9 +3,6 @@ package com.express.railway.railwayseatbooking.Model;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
-import java.sql.Time;
-import java.time.DayOfWeek;
-
 @Entity
 public class Journey {
 
@@ -14,11 +11,11 @@ public class Journey {
     private int trainNo;
     private String origin;
     private String destination;
-    private DayOfWeek day;
-    private Time time;
+    private String day;
+    private String time;
     private boolean status;
 
-    public Journey(int journeyID, int trainNo, String origin, String destination, DayOfWeek day, Time time, boolean status) {
+    public Journey(int journeyID, int trainNo, String origin, String destination, String day, String time, boolean status) {
         this.journeyID = journeyID;
         this.trainNo = trainNo;
         this.origin = origin;
@@ -26,10 +23,6 @@ public class Journey {
         this.day = day;
         this.time = time;
         this.status = status;
-    }
-
-    public Journey(){
-
     }
 
     public int getJourneyID() {
@@ -64,19 +57,19 @@ public class Journey {
         this.destination = destination;
     }
 
-    public DayOfWeek getDay() {
+    public String getDay() {
         return day;
     }
 
-    public void setDay(DayOfWeek day) {
+    public void setDay(String day) {
         this.day = day;
     }
 
-    public Time getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(Time time) {
+    public void setTime(String time) {
         this.time = time;
     }
 
