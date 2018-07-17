@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".WeekBookingsActivity" />
-        <activity android:name=".DayActivity"></activity>
+        <activity android:name=".DayActivity" />
+        <activity android:name=".TrainActivity"></activity>
     </application>
 
 </manifest>
