@@ -11,13 +11,15 @@ public class Reservation {
     @PrimaryKey(autoGenerate = true)
     private int reservationID;
     private int journeyID;
-    private Date date;
+    private String date;
     private String passangerName;
     private int noOfFirstClassSeats;
     private int noOfSecondClassSeats;
     private int totalBill;
 
-    public Reservation(int reservationID, int journeyID, Date date, String passangerName, int noOfFirstClassSeats, int noOfSecondClassSeats, int totalBill) {
+    public Reservation(int reservationID, int journeyID, String date, String passangerName,
+                       int noOfFirstClassSeats, int noOfSecondClassSeats, int totalBill)
+    {
         this.reservationID = reservationID;
         this.journeyID = journeyID;
         this.date = date;
@@ -25,10 +27,6 @@ public class Reservation {
         this.noOfFirstClassSeats = noOfFirstClassSeats;
         this.noOfSecondClassSeats = noOfSecondClassSeats;
         this.totalBill = totalBill;
-    }
-
-    public Reservation(){
-
     }
 
     public int getReservationID() {
@@ -47,11 +45,11 @@ public class Reservation {
         this.journeyID = journeyID;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

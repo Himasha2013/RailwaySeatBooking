@@ -21,10 +21,6 @@ public class Seat {
         this.secondClassPrice = secondClassPrice;
     }
 
-    public Seat(){
-
-    }
-
     public int getTrainNo() {
         return trainNo;
     }

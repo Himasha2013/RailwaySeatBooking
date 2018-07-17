@@ -4,7 +4,9 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import com.express.railway.railwayseatbooking.Database.Dao.JourneyDao;
+import com.express.railway.railwayseatbooking.Database.Dao.TrainDao;
 import com.express.railway.railwayseatbooking.Model.Journey;
+import com.express.railway.railwayseatbooking.Model.Train;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
@@ -12,9 +14,11 @@ import java.util.concurrent.ExecutionException;
 public class DataBaseManager {
 
     private static JourneyDao journeyDao;
+    private static TrainDao trainDao;
 
     public DataBaseManager(Context context) {
         journeyDao = DatabaseHolder.getDatabaseInstance(context).journeyDao();
+        trainDao = DatabaseHolder.getDatabaseInstance(context).trainDao();
     }
 
     public void saveDataToDataBase(ArrayList<Journey> arrayList) {
@@ -50,6 +54,16 @@ public class DataBaseManager {
         }
     }
 
+    public ArrayList<Train> getTrainData() {
+        retrievedTrainDataFromDatabase retrievedTrainDataFromDatabase =
+                new retrievedTrainDataFromDatabase();
+        try {
+            ArrayList<Train> es = retrievedTrainDataFromDatabase.execute().get();
+            return es;
+        } catch (InterruptedException | ExecutionException e) {
+            return new ArrayList<>();
+        }
+    }
 
     public void removeAll() {
         journeyDao.clearAll();
@@ -116,6 +130,19 @@ public class DataBaseManager {
 
         @Override
         protected void onPostExecute(ArrayList<Journey> es) {
+            super.onPostExecute(es);
+        }
+    }
+
+    private static class retrievedTrainDataFromDatabase extends AsyncTask<Void, Void, ArrayList<Train>> {
+
+        @Override
+        protected ArrayList<Train> doInBackground(Void... voids) {
+            return (ArrayList<Train>) trainDao.getAll();
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<Train> es) {
             super.onPostExecute(es);
         }
     }

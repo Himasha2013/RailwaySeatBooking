@@ -7,25 +7,21 @@ import android.arch.persistence.room.PrimaryKey;
 public class Train {
 
     @PrimaryKey(autoGenerate = true)
-    private int trainNo;
+    private Integer trainNo;
     private String trainName;
-    private String isBookingAvailable;
+    private boolean isBookingAvailable;
 
-    public Train(int trainNo, String trainName, String isBookingAvailable) {
+    public Train(Integer trainNo, String trainName, boolean isBookingAvailable) {
         this.trainNo = trainNo;
         this.trainName = trainName;
         this.isBookingAvailable = isBookingAvailable;
     }
 
-    public Train(){
-
-    }
-
-    public int getTrainNo() {
+    public Integer getTrainNo() {
         return trainNo;
     }
 
-    public void setTrainNo(int trainNo) {
+    public void setTrainNo(Integer trainNo) {
         this.trainNo = trainNo;
     }
 
@@ -37,11 +33,11 @@ public class Train {
         this.trainName = trainName;
     }
 
-    public String getIsBookingAvailable() {
+    public boolean getIsBookingAvailable() {
         return isBookingAvailable;
     }
 
-    public void setIsBookingAvailable(String isBookingAvailable) {
+    public void setIsBookingAvailable(boolean isBookingAvailable) {
         this.isBookingAvailable = isBookingAvailable;
     }
 
