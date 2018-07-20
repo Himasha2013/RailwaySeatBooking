@@ -1,7 +1,9 @@
-package com.express.railway.railwayseatbooking;
+package com.express.railway.railwayseatbooking.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.express.railway.railwayseatbooking.R;
 
 public class TrainActivity extends AppCompatActivity {
 

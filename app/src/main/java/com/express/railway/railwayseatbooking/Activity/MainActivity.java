@@ -1,4 +1,4 @@
-package com.express.railway.railwayseatbooking;
+package com.express.railway.railwayseatbooking.Activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import com.express.railway.railwayseatbooking.R;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -82,7 +84,7 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_scedule) {
-            Intent intent = new Intent(MainActivity.this, WeekBookingsActivity.class);
+            Intent intent = new Intent(MainActivity.this, WeekActivity.class);
             startActivity(intent);
         } else if (id == R.id.nav_gallery) {
 

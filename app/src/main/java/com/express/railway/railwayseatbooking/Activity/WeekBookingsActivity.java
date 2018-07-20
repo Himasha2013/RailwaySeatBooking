@@ -1,4 +1,4 @@
-package com.express.railway.railwayseatbooking;
+package com.express.railway.railwayseatbooking.Activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import com.express.railway.railwayseatbooking.Activity.Adpater.WeekBookingsAdapter;
 import com.express.railway.railwayseatbooking.Database.DataBaseManager;
 import com.express.railway.railwayseatbooking.Model.Train;
+import com.express.railway.railwayseatbooking.R;
 
 import java.util.ArrayList;
 
