@@ -19,6 +19,9 @@ import com.express.railway.railwayseatbooking.R;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    private Bundle extras;
+    private String userName;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -43,6 +46,14 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        // Get date from login activity
+        extras = getIntent().getExtras();
+
+        if (extras != null) {
+            userName = extras.getString("USER_NAME");
+            System.out.println(userName);
+        }
     }
 
     @Override
@@ -86,17 +97,22 @@ public class MainActivity extends AppCompatActivity
         if (id == R.id.nav_scedule) {
             Intent intent = new Intent(MainActivity.this, WeekActivity.class);
             startActivity(intent);
-        } else if (id == R.id.nav_gallery) {
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        }
+        else if (id == R.id.nav_make_booking) {
+            Intent intent = new Intent(MainActivity.this, AddBookingActivity.class);
+            startActivity(intent);
+        }
+        else if (id == R.id.nav_slideshow) {
 
         }
+        else if (id == R.id.nav_manage) {
+
+        }
+//        else if (id == R.id.nav_share) {
+//
+//        } else if (id == R.id.nav_send) {
+//
+//        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

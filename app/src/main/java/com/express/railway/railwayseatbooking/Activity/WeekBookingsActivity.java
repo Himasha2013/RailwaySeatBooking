@@ -17,7 +17,7 @@ public class WeekBookingsActivity extends AppCompatActivity {
 
     RecyclerView week_bookings_rv;
     LinearLayoutManager layoutManager;
-    ArrayList<Train> flowers;
+    ArrayList<Train> trains;
 
     //DB manager
     private DataBaseManager dataBaseManager;
@@ -31,12 +31,7 @@ public class WeekBookingsActivity extends AppCompatActivity {
     }
 
     private void initialize(){
-        week_bookings_rv = findViewById(R.id.flower_list_rv);
-
-//        //Set up the layout manager for recyler view
-//        layoutManager = new LinearLayoutManager(this);
-//        RecyclerView.LayoutManager layoutManager_rv = layoutManager;
-//        flowers_rv.setLayoutManager(layoutManager_rv);
+        week_bookings_rv = findViewById(R.id.train_list_rv);
 
         //Initialize database mgr
         dataBaseManager = new DataBaseManager(this);
@@ -53,21 +48,21 @@ public class WeekBookingsActivity extends AppCompatActivity {
 //        };
 
         //Get data from the db
-        ArrayList<Train> flowersArrayList = dataBaseManager.getTrainData();
+        ArrayList<Train> trainArrayList = dataBaseManager.getTrainData();
 
-        flowers = new ArrayList<>();
+        trains = new ArrayList<>();
 
 
-        if (flowersArrayList != null && flowersArrayList.size() > 0) {
-            this.flowers.addAll(flowersArrayList);
+        if (trainArrayList != null && trainArrayList.size() > 0) {
+            this.trains.addAll(trainArrayList);
         }
         else {
             for (int i = 0; i < names.length; i++) {
-                flowers.add(new Train(nums[i], names[i], possibleBookings[i]));
+                trains.add(new Train(nums[i], names[i], possibleBookings[i]));
             }
         }
 
-        WeekBookingsAdapter adapter = new WeekBookingsAdapter(this, flowers);
+        WeekBookingsAdapter adapter = new WeekBookingsAdapter(this, trains);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
 
         RecyclerView.LayoutManager mLayoutManager = linearLayoutManager;
