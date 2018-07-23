@@ -4,8 +4,10 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import com.express.railway.railwayseatbooking.Database.Dao.JourneyDao;
+import com.express.railway.railwayseatbooking.Database.Dao.SeatDao;
 import com.express.railway.railwayseatbooking.Database.Dao.TrainDao;
 import com.express.railway.railwayseatbooking.Model.Journey;
+import com.express.railway.railwayseatbooking.Model.Seat;
 import com.express.railway.railwayseatbooking.Model.Train;
 
 import java.util.ArrayList;
@@ -15,6 +17,7 @@ public class DataBaseManager {
 
     private static JourneyDao journeyDao;
     private static TrainDao trainDao;
+    private static SeatDao seatDao;
 
     public DataBaseManager(Context context) {
         journeyDao = DatabaseHolder.getDatabaseInstance(context).journeyDao();
@@ -33,6 +36,11 @@ public class DataBaseManager {
 
     public void SaveTrainToDatabase(Train entry) {
         SaveTrainToDatabase saveItemToDatabase = new SaveTrainToDatabase(entry);
+        saveItemToDatabase.execute();
+    }
+
+    public void SaveSeatToDatabase(Seat entry) {
+        SaveSeatToDatabase saveItemToDatabase = new SaveSeatToDatabase(entry);
         saveItemToDatabase.execute();
     }
 
@@ -165,6 +173,24 @@ public class DataBaseManager {
         protected Void doInBackground(Void... voids) {
 //            train.setTrainNo(456);
             trainDao.save(train);
+            return null;
+
+        }
+    }
+
+    private static class SaveSeatToDatabase extends AsyncTask<Void, Void, Void> {
+
+        private Seat seat;
+
+
+        SaveSeatToDatabase(Seat seat) {
+            this.seat = seat;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+//            train.setTrainNo(456);
+            seatDao.save(seat);
             return null;
 
         }

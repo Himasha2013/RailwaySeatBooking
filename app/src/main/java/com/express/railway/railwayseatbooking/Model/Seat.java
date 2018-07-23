@@ -14,8 +14,7 @@ public class Seat {
     private int firstClassPrice;
     private int secondClassPrice;
 
-    public Seat(int seatNo, int trainNo, int noOfFirstClassSeats, int noOfSecondClassSeats, int firstClassPrice, int secondClassPrice) {
-        this.seatNo = seatNo;
+    public Seat(int trainNo, int noOfFirstClassSeats, int noOfSecondClassSeats, int firstClassPrice, int secondClassPrice) {
         this.trainNo = trainNo;
         this.noOfFirstClassSeats = noOfFirstClassSeats;
         this.noOfSecondClassSeats = noOfSecondClassSeats;
