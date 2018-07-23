@@ -11,8 +11,7 @@ public class Train {
     private String trainName;
     private boolean isBookingAvailable;
 
-    public Train(Integer trainNo, String trainName, boolean isBookingAvailable) {
-        this.trainNo = trainNo;
+    public Train(String trainName, boolean isBookingAvailable) {
         this.trainName = trainName;
         this.isBookingAvailable = isBookingAvailable;
     }

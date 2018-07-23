@@ -10,7 +10,7 @@ import com.express.railway.railwayseatbooking.Model.Reservation;
 import com.express.railway.railwayseatbooking.Model.Seat;
 import com.express.railway.railwayseatbooking.Model.Train;
 
-@Database(entities = {Journey.class, Reservation.class, Seat.class, Train.class}, version = 1, exportSchema = false)
+@Database(entities = {Journey.class, Reservation.class, Seat.class, Train.class}, version = 3)
 
 public abstract class AppDatabase extends RoomDatabase {
 

@@ -58,7 +58,7 @@ public class WeekBookingsActivity extends AppCompatActivity {
         }
         else {
             for (int i = 0; i < names.length; i++) {
-                trains.add(new Train(nums[i], names[i], possibleBookings[i]));
+                trains.add(new Train(names[i], possibleBookings[i]));
             }
         }
 

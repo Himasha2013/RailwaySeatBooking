@@ -31,6 +31,11 @@ public class DataBaseManager {
         saveItemToDatabase.execute();
     }
 
+    public void SaveTrainToDatabase(Train entry) {
+        SaveTrainToDatabase saveItemToDatabase = new SaveTrainToDatabase(entry);
+        saveItemToDatabase.execute();
+    }
+
 
     public void remove(Journey flower) {
         RemoveItemFromDataBase removeItemFromDataBase = new RemoveItemFromDataBase(flower);
@@ -144,6 +149,24 @@ public class DataBaseManager {
         @Override
         protected void onPostExecute(ArrayList<Train> es) {
             super.onPostExecute(es);
+        }
+    }
+
+    private static class SaveTrainToDatabase extends AsyncTask<Void, Void, Void> {
+
+        private Train train;
+
+
+        SaveTrainToDatabase(Train train) {
+            this.train = train;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            train.setTrainNo(123);
+            trainDao.save(train);
+            return null;
+
         }
     }
 }
