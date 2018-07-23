@@ -163,7 +163,7 @@ public class DataBaseManager {
 
         @Override
         protected Void doInBackground(Void... voids) {
-            train.setTrainNo(123);
+//            train.setTrainNo(456);
             trainDao.save(train);
             return null;
 
