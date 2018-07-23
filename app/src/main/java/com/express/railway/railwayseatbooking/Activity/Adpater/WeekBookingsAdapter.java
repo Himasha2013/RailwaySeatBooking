@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.express.railway.railwayseatbooking.Model.Journey;
 import com.express.railway.railwayseatbooking.Model.Train;
 import com.express.railway.railwayseatbooking.R;
 
@@ -16,9 +17,9 @@ import java.util.ArrayList;
 public class WeekBookingsAdapter extends RecyclerView.Adapter<WeekBookingsAdapter.ViewHolder> {
 
     private Context mContext;
-    private ArrayList<Train> mList;
+    private ArrayList<Journey> mList;
 
-    public WeekBookingsAdapter(Context context, ArrayList<Train> list) {
+    public WeekBookingsAdapter(Context context, ArrayList<Journey> list) {
         mContext = context;
         mList = list;
     }
@@ -44,15 +45,15 @@ public class WeekBookingsAdapter extends RecyclerView.Adapter<WeekBookingsAdapte
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        Train train = mList.get(position);
+        Journey journey = mList.get(position);
 
         // Set item views based on your views and data model
         TextView name = holder.name;
-        TextView isBookingAvailable = holder.price;
+        TextView time = holder.price;
         ImageView image = holder.image;
 
-        name.setText(train.getTrainName());
-        isBookingAvailable.setText((train.getIsBookingAvailable() == true ? "Yes" : "No"));
+        name.setText("Origin: "+journey.getOrigin() + "  Destination: "+journey.getDestination());
+        time.setText(journey.getTime());
         //image.setImageResource(train.getImage());
     }
 

@@ -61,33 +61,51 @@ public class WeekActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch(position){
                     case 0: {
-                        startActivity(new Intent(WeekActivity.this, WeekBookingsActivity.class));
-                        sharedPreferences.edit().putString(SEL_DAY, "Monday").apply();
+                        startActivity(
+                                new Intent(WeekActivity.this, WeekBookingsActivity.class)
+                                        .putExtra("week_name", "Monday")
+                        );
+//                        sharedPreferences.edit().putString(SEL_DAY, "Monday").apply();
                         break;
                     }
                     case 1: {
-                        startActivity(new Intent(WeekActivity.this, WeekBookingsActivity.class));
-                        sharedPreferences.edit().putString(SEL_DAY, "Tuesday").apply();
+                        startActivity(
+                                        new Intent(WeekActivity.this, WeekBookingsActivity.class)
+                                                .putExtra("week_name", "Tuesday")
+                                );
+                        //sharedPreferences.edit().putString(SEL_DAY, "Tuesday").apply();
                         break;
                     }
                     case 2: {
-                        startActivity(new Intent(WeekActivity.this, WeekBookingsActivity.class));
-                        sharedPreferences.edit().putString(SEL_DAY, "Wednesday").apply();
+                        startActivity(
+                                new Intent(WeekActivity.this, WeekBookingsActivity.class)
+                                        .putExtra("week_name", "Wednesday")
+                        );
+                        //sharedPreferences.edit().putString(SEL_DAY, "Wednesday").apply();
                         break;
                     }
                     case 3: {
-                        startActivity(new Intent(WeekActivity.this, WeekBookingsActivity.class));
-                        sharedPreferences.edit().putString(SEL_DAY, "Thursday").apply();
+                        startActivity(
+                                new Intent(WeekActivity.this, WeekBookingsActivity.class)
+                                        .putExtra("week_name", "Thursday")
+                        );
+                        //sharedPreferences.edit().putString(SEL_DAY, "Thursday").apply();
                         break;
                     }
                     case 4: {
-                        startActivity(new Intent(WeekActivity.this, WeekBookingsActivity.class));
-                        sharedPreferences.edit().putString(SEL_DAY, "Friday").apply();
+                        startActivity(
+                                new Intent(WeekActivity.this, WeekBookingsActivity.class)
+                                        .putExtra("week_name", "Friday")
+                        );
+                        //sharedPreferences.edit().putString(SEL_DAY, "Friday").apply();
                         break;
                     }
                     case 5: {
-                        startActivity(new Intent(WeekActivity.this, WeekBookingsActivity.class));
-                        sharedPreferences.edit().putString(SEL_DAY, "Saturday").apply();
+                        startActivity(
+                                new Intent(WeekActivity.this, WeekBookingsActivity.class)
+                                        .putExtra("week_name", "Saturday")
+                        );
+                        //sharedPreferences.edit().putString(SEL_DAY, "Saturday").apply();
                         break;
                     }
                     default:break;
