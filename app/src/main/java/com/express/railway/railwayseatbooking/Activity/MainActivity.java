@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action 123", Snackbar.LENGTH_LONG)
+                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
         });
@@ -102,8 +102,9 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(MainActivity.this, AddBookingActivity.class);
             startActivity(intent);
         }
-        else if (id == R.id.nav_slideshow) {
-
+        else if (id == R.id.nav_add_train) {
+            Intent intent = new Intent(MainActivity.this, AddTrainActivity.class);
+            startActivity(intent);
         }
         else if (id == R.id.nav_manage) {
 

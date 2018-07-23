@@ -7,18 +7,28 @@ import android.arch.persistence.room.PrimaryKey;
 public class Seat {
 
     @PrimaryKey(autoGenerate = true)
+    private int seatNo;
     private int trainNo;
     private int noOfFirstClassSeats;
     private int noOfSecondClassSeats;
     private int firstClassPrice;
     private int secondClassPrice;
 
-    public Seat(int trainNo, int noOfFirstClassSeats, int noOfSecondClassSeats, int firstClassPrice, int secondClassPrice) {
+    public Seat(int seatNo, int trainNo, int noOfFirstClassSeats, int noOfSecondClassSeats, int firstClassPrice, int secondClassPrice) {
+        this.seatNo = seatNo;
         this.trainNo = trainNo;
         this.noOfFirstClassSeats = noOfFirstClassSeats;
         this.noOfSecondClassSeats = noOfSecondClassSeats;
         this.firstClassPrice = firstClassPrice;
         this.secondClassPrice = secondClassPrice;
+    }
+
+    public int getSeatNo() {
+        return seatNo;
+    }
+
+    public void setSeatNo(int seatNo) {
+        this.seatNo = seatNo;
     }
 
     public int getTrainNo() {
@@ -64,7 +74,8 @@ public class Seat {
     @Override
     public String toString() {
         return "Seat{" +
-                "trainNo=" + trainNo +
+                "seatNo=" + seatNo +
+                ", trainNo=" + trainNo +
                 ", noOfFirstClassSeats=" + noOfFirstClassSeats +
                 ", noOfSecondClassSeats=" + noOfSecondClassSeats +
                 ", firstClassPrice=" + firstClassPrice +

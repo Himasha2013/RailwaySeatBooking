@@ -11,9 +11,9 @@
             android:id="@+id/nav_make_booking"
             android:title="Add New Booking" />
         <item
-            android:id="@+id/nav_slideshow"
+            android:id="@+id/nav_add_train"
             android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
+            android:title="Add Train" />
         <item
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
