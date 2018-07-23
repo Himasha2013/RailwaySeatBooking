@@ -53,7 +53,13 @@ public class AddTrainActivity extends AppCompatActivity {
                 //Save train details
                 if(isBookingAvailable){
                     Train train = new Train(txtTrainName.getText().toString(), isBookingAvailable);
-                    Seat seat = new Seat(train.getTrainNo(),Integer.parseInt(txtNoOfFirstClassSeats.getText().toString()), Integer.parseInt(txtNoOfSecondClassSeats.getText().toString()), Integer.parseInt(txtFirstClassPrice.getText().toString()), Integer.parseInt(txtSecondClassPrice.getText().toString()));
+                    Seat seat = new Seat(
+                            train.getTrainNo(),
+                            Integer.parseInt(txtNoOfFirstClassSeats.getText().toString()),
+                            Integer.parseInt(txtNoOfSecondClassSeats.getText().toString()),
+                            Integer.parseInt(txtFirstClassPrice.getText().toString()),
+                            Integer.parseInt(txtSecondClassPrice.getText().toString())
+                    );
                     //Insert in to the db
                     dataBaseManager.SaveTrainToDatabase(train);
                     dataBaseManager.SaveSeatToDatabase(seat);
@@ -69,8 +75,6 @@ public class AddTrainActivity extends AppCompatActivity {
 
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener()
         {
-
-
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                if(checkedId == R.id.rbYes)
