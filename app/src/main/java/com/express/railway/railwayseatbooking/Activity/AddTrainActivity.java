@@ -9,6 +9,7 @@ import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.express.railway.railwayseatbooking.Database.DataBaseManager;
+import com.express.railway.railwayseatbooking.Model.Seat;
 import com.express.railway.railwayseatbooking.Model.Train;
 import com.express.railway.railwayseatbooking.R;
 
@@ -34,7 +35,7 @@ public class AddTrainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_add_train);
 
         //Initialize database mgr
-        dataBaseManager = new DataBaseManager(this);
+       dataBaseManager = new DataBaseManager(this);
 
         txtTrainName = findViewById(R.id.txtTrainName);
         radioGroup = findViewById(R.id.rbgIsBookingAvailable);
@@ -45,23 +46,22 @@ public class AddTrainActivity extends AppCompatActivity {
         txtFirstClassPrice =  findViewById(R.id.txtFirstClassPrice);
         txtSecondClassPrice =  findViewById(R.id.txtSecondClassPrice);
 
-        Toast.makeText(getApplicationContext(),dataBaseManager.getTrainData().get(0).getTrainName() , Toast.LENGTH_LONG).show();
-
 
         addTrainBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //Save train details
                 if(isBookingAvailable){
-
-                }
-                else if (!isBookingAvailable){
-                    String train_name = txtTrainName.getText().toString();
-
-                    Train new_train = new Train(train_name, isBookingAvailable);
+                    Train train = new Train(txtTrainName.getText().toString(), isBookingAvailable);
+                    Seat seat = new Seat(train.getTrainNo(),Integer.parseInt(txtNoOfFirstClassSeats.getText().toString()), Integer.parseInt(txtNoOfSecondClassSeats.getText().toString()), Integer.parseInt(txtFirstClassPrice.getText().toString()), Integer.parseInt(txtSecondClassPrice.getText().toString()));
                     //Insert in to the db
-                    dataBaseManager.SaveTrainToDatabase(new_train);
-
+                    dataBaseManager.SaveTrainToDatabase(train);
+                    dataBaseManager.SaveSeatToDatabase(seat);
+                }
+                else{
+                    Train train = new Train(txtTrainName.getText().toString(), isBookingAvailable);
+                    //Insert in to the db
+                    dataBaseManager.SaveTrainToDatabase(train);
                 }
             }
         });
