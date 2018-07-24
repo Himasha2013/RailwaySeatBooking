@@ -51,7 +51,6 @@ public class AddJourneyActivity extends AppCompatActivity {
         daysDropDown = findViewById(R.id.date_dropdown);
         txtOrigin = findViewById(R.id.txtOrigin);
         txtDestination = findViewById(R.id.txtDestination);
-//        txtDate = findViewById(R.id.txtDate);
         txtTime = findViewById(R.id.txtTime);
         radioGroup = findViewById(R.id.rbgStatus);
         addJourneyBtn = findViewById(R.id.addJourneyBtn);

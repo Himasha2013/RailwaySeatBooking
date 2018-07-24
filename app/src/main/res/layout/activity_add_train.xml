@@ -25,7 +25,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorPrimaryDark"
         android:hint="Train Name"
-        android:inputType="textPersonName" />
+        android:inputType="textCapWords" />
 
     <Space
         android:layout_width="fill_parent"

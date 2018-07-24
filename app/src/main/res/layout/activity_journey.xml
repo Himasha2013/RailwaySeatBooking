@@ -43,16 +43,16 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorPrimaryDark"
-        android:hint="Origin"
-        android:inputType="text" />
+        android:hint="From"
+        android:inputType="textCapWords" />
 
     <EditText
         android:id="@+id/txtDestination"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:backgroundTint="@color/colorPrimaryDark"
-        android:hint="Destination"
-        android:inputType="text" />
+        android:hint="To"
+        android:inputType="textCapWords" />
 
 
     <!--<EditText-->
@@ -125,8 +125,6 @@
         android:layout_gravity="center_horizontal"
         android:background="@color/colorPrimaryDark"
         android:elevation="4dp"
-        android:paddingLeft="70dp"
-        android:paddingRight="70dp"
-        android:text="Submit"
+        android:text="Save"
         android:textColor="#fff" />
 </LinearLayout>
