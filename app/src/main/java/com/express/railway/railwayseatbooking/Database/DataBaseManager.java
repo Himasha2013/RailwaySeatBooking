@@ -65,6 +65,11 @@ public class DataBaseManager {
         saveItemToDatabase.execute();
     }
 
+    public void SaveJourneyToDatabase(Journey entry) {
+        SaveJourneyToDatabase saveItemToDatabase = new SaveJourneyToDatabase(entry);
+        saveItemToDatabase.execute();
+    }
+
 
     public void remove(Journey flower) {
         RemoveItemFromDataBase removeItemFromDataBase = new RemoveItemFromDataBase(flower);
@@ -259,6 +264,23 @@ public class DataBaseManager {
         @Override
         protected Void doInBackground(Void... voids) {
             seatDao.save(seat);
+            return null;
+
+        }
+    }
+
+    private static class SaveJourneyToDatabase extends AsyncTask<Void, Void, Void> {
+
+        private Journey journey;
+
+
+        SaveJourneyToDatabase(Journey journey) {
+            this.journey = journey;
+        }
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            journeyDao.save(journey);
             return null;
 
         }

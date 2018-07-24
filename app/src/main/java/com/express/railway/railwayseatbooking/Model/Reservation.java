@@ -15,12 +15,10 @@ public class Reservation {
     private int noOfSecondClassSeats;
     private int totalBill;
 
-    public Reservation(int journeyID, String date, String passangerName,
-                       int noOfFirstClassSeats, int noOfSecondClassSeats, int totalBill)
-    {
+    public Reservation(int journeyID, String date, String passengerName, int noOfFirstClassSeats, int noOfSecondClassSeats, int totalBill) {
         this.journeyID = journeyID;
         this.date = date;
-        this.passengerName = passangerName;
+        this.passengerName = passengerName;
         this.noOfFirstClassSeats = noOfFirstClassSeats;
         this.noOfSecondClassSeats = noOfSecondClassSeats;
         this.totalBill = totalBill;

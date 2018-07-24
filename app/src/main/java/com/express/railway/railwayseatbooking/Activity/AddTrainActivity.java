@@ -6,14 +6,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import com.express.railway.railwayseatbooking.Database.DataBaseManager;
 import com.express.railway.railwayseatbooking.Model.Seat;
 import com.express.railway.railwayseatbooking.Model.Train;
 import com.express.railway.railwayseatbooking.R;
 
-import java.util.UUID;
 
 public class AddTrainActivity extends AppCompatActivity {
 
