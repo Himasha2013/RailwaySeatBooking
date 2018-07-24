@@ -52,24 +52,7 @@ public class AddTrainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 Train train = new Train(txtTrainName.getText().toString(), isBookingAvailable);
-
-                //Save train details
-//                if(isBookingAvailable){
-//                                        Seat seat = new Seat(
-//                            1,
-//                            5,
-//                            5,
-//                            5,
-//                            5
-//                    );
-//                    //Insert in to the db
-//                    dataBaseManager.SaveTrainToDatabase(train);
-//                    dataBaseManager.SaveSeatToDatabase(seat);
-//                }
-//                else{
-//                    //Insert in to the db
-//                    dataBaseManager.SaveTrainToDatabase(train);
-//                }
+                
             }
         });
 
