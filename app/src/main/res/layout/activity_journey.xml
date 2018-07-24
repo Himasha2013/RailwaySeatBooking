@@ -55,13 +55,20 @@
         android:inputType="text" />
 
 
-    <EditText
-        android:id="@+id/txtDate"
-        android:layout_width="match_parent"
+    <!--<EditText-->
+        <!--android:id="@+id/txtDate"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:ems="10"-->
+        <!--android:hint="Date"-->
+        <!--android:inputType="text" />-->
+
+    <Spinner
+        android:id="@+id/date_dropdown"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Date"
-        android:inputType="text" />
+
+        android:spinnerMode="dropdown"/>
 
     <EditText
         android:id="@+id/txtTime"
