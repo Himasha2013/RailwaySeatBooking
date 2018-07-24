@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -21,6 +22,8 @@ public class AddTrainActivity extends AppCompatActivity {
     private EditText txtTrainName;
     private Button addTrainBtn;
     private RadioGroup radioGroup;
+    private RadioButton rbYes;
+    private RadioButton rbNo;
     private EditText  txtNoOfFirstClassSeats;
     private EditText  txtNoOfSecondClassSeats;
     private EditText txtFirstClassPrice;
@@ -38,6 +41,8 @@ public class AddTrainActivity extends AppCompatActivity {
 
         txtTrainName = findViewById(R.id.txtTrainName);
         radioGroup = findViewById(R.id.rbgIsBookingAvailable);
+        rbYes = findViewById(R.id.rbYes);
+        rbNo = findViewById(R.id.rbNo);
         addTrainBtn = findViewById(R.id.add_train_btn);
 
         txtNoOfFirstClassSeats = findViewById(R.id.txtNoOfFirstClassSeats);
@@ -95,6 +100,20 @@ public class AddTrainActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),"Please fill all required fields", Toast.LENGTH_LONG).show();
                     }
                 }
+
+                txtTrainName.setText("");
+                txtNoOfFirstClassSeats.setText("");
+                txtNoOfSecondClassSeats.setText("");
+                txtFirstClassPrice.setText("");
+                txtSecondClassPrice.setText("");
+                rbYes.setChecked(false);
+                rbNo.setChecked(true);
+                txtNoOfFirstClassSeats.setVisibility(View.INVISIBLE);
+                txtNoOfSecondClassSeats.setVisibility(View.INVISIBLE);
+                txtFirstClassPrice.setVisibility(View.INVISIBLE);
+                txtSecondClassPrice.setVisibility(View.INVISIBLE);
+
+                Toast.makeText(getApplicationContext(),"Train added successfully!", Toast.LENGTH_LONG).show();
             }
         });
 

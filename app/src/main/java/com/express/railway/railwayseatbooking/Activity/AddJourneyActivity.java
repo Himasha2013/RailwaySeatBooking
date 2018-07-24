@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -24,12 +25,12 @@ public class AddJourneyActivity extends AppCompatActivity {
 
     private DataBaseManager dataBaseManager;
     private RadioGroup radioGroup;
+    private RadioButton rbActive;
+    private RadioButton rbInactive;
     private Spinner trainDropDown;
     private Spinner daysDropDown;
-    private Spinner date_dropdown;
     private EditText  txtOrigin;
     private EditText txtDestination;
-    private EditText txtDate;
     private EditText  txtTime;
     private Button addJourneyBtn;
     HashMap<Integer,String> spinnerMap;
@@ -51,9 +52,10 @@ public class AddJourneyActivity extends AppCompatActivity {
         daysDropDown = findViewById(R.id.date_dropdown);
         txtOrigin = findViewById(R.id.txtOrigin);
         txtDestination = findViewById(R.id.txtDestination);
-//        txtDate = findViewById(R.id.txtDate);
         txtTime = findViewById(R.id.txtTime);
         radioGroup = findViewById(R.id.rbgStatus);
+        rbActive = findViewById(R.id.rbActive);
+        rbInactive = findViewById(R.id.rbInactive);
         addJourneyBtn = findViewById(R.id.addJourneyBtn);
         spinnerMap = new HashMap<>();
 
@@ -96,6 +98,14 @@ public class AddJourneyActivity extends AppCompatActivity {
 
                     //Insert in to the db
                     dataBaseManager.SaveJourneyToDatabase(journey);
+
+                    txtOrigin.setText("");
+                    txtDestination.setText("");
+                    txtTime.setText("");
+                    rbActive.setChecked(true);
+                    rbInactive.setChecked(false);
+
+                    Toast.makeText(getApplicationContext(),"Journey added successfully!", Toast.LENGTH_LONG).show();
                 }
                 else{
                     Toast.makeText(getApplicationContext(),"Please fill all required fields", Toast.LENGTH_LONG).show();
