@@ -3,11 +3,13 @@ package com.express.railway.railwayseatbooking.Model;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
+import java.util.Random;
+
 @Entity
 public class Journey {
 
     @PrimaryKey (autoGenerate = true)
-    private int journeyID;
+    private int journeyID = new Random().nextInt(10000)+1;
     private int trainNo;
     private String origin;
     private String destination;
