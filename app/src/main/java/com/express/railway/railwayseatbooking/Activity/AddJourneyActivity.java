@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.express.railway.railwayseatbooking.Database.DataBaseManager;
 import com.express.railway.railwayseatbooking.Model.Journey;
@@ -62,34 +63,44 @@ public class AddJourneyActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
+                if (!trainDropDown.getSelectedItem().toString().isEmpty() &&
+                    !daysDropDown.getSelectedItem().toString().isEmpty() &&
+                    !txtOrigin.getText().toString().isEmpty() &&
+                    !txtDestination.getText().toString().isEmpty() &&
+                    !txtTime.getText().toString().isEmpty()
+                    ){
+                    String selected_train = trainDropDown.getSelectedItem().toString();
+                    String selected_date = daysDropDown.getSelectedItem().toString();
 
-                String selected_train = trainDropDown.getSelectedItem().toString();
-                String selected_date = daysDropDown.getSelectedItem().toString();
+                    int train_id = 0;
 
-                int train_id = 0;
-
-                // Get train id
-                for (Map.Entry<Integer, String> entry : spinnerMap.entrySet()) {
-                    if (entry.getValue().equals(selected_train)) {
-                        train_id = entry.getKey();
+                    // Get train id
+                    for (Map.Entry<Integer, String> entry : spinnerMap.entrySet()) {
+                        if (entry.getValue().equals(selected_train)) {
+                            train_id = entry.getKey();
+                        }
                     }
+
+                    //String train = spinnerMap.get(trainDropDown.getSelectedItem());
+
+                    //int trainNo = Integer.parseInt(spinnerMap.get(trainDropDown.getSelectedItem()));
+
+                    boolean status = radioGroup.getCheckedRadioButtonId() == R.id.rbActive ? true : false;
+
+                    Journey journey = new Journey(
+                            train_id,txtOrigin.getText().toString(),
+                            txtDestination.getText().toString(),
+                            selected_date,
+                            txtTime.getText().toString(),
+                            status);
+
+                    //Insert in to the db
+                    dataBaseManager.SaveJourneyToDatabase(journey);
+                }
+                else{
+                    Toast.makeText(getApplicationContext(),"Please fill all required fields", Toast.LENGTH_LONG).show();
                 }
 
-                //String train = spinnerMap.get(trainDropDown.getSelectedItem());
-
-                //int trainNo = Integer.parseInt(spinnerMap.get(trainDropDown.getSelectedItem()));
-
-                boolean status = radioGroup.getCheckedRadioButtonId() == R.id.rbActive ? true : false;
-
-                Journey journey = new Journey(
-                        train_id,txtOrigin.getText().toString(),
-                        txtDestination.getText().toString(),
-                        selected_date,
-                        txtTime.getText().toString(),
-                        status);
-
-                //Insert in to the db
-                dataBaseManager.SaveJourneyToDatabase(journey);
             }
         });
     }

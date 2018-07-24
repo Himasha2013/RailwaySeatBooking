@@ -6,6 +6,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 import com.express.railway.railwayseatbooking.Database.DataBaseManager;
 import com.express.railway.railwayseatbooking.Model.Seat;
@@ -60,24 +61,39 @@ public class AddTrainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 //Save train details
                 if(isBookingAvailable){
-                    Train train = new Train(txtTrainName.getText().toString(), isBookingAvailable);
-                    //dataBaseManager.SaveTrainToDatabase(train);
 
-                    Seat seat = new Seat(
-                            1,
-                            Integer.parseInt(txtNoOfFirstClassSeats.getText().toString()),
-                            Integer.parseInt(txtNoOfSecondClassSeats.getText().toString()),
-                            Integer.parseInt(txtFirstClassPrice.getText().toString()),
-                            Integer.parseInt(txtSecondClassPrice.getText().toString())
-                    );
-                    //Insert in to the db
-                    dataBaseManager.SaveTrainAndSeatToDatabase(train, seat);
+                    if (txtTrainName != null &&
+                        !txtNoOfFirstClassSeats.getText().toString().isEmpty() &&
+                        !txtNoOfSecondClassSeats.getText().toString().isEmpty() &&
+                        !txtFirstClassPrice.getText().toString().isEmpty() &&
+                        !txtSecondClassPrice.getText().toString().isEmpty()
+                            ){
+                        Train train = new Train(txtTrainName.getText().toString(), isBookingAvailable);
+                        //dataBaseManager.SaveTrainToDatabase(train);
 
+                        Seat seat = new Seat(
+                                1,
+                                Integer.parseInt(txtNoOfFirstClassSeats.getText().toString()),
+                                Integer.parseInt(txtNoOfSecondClassSeats.getText().toString()),
+                                Integer.parseInt(txtFirstClassPrice.getText().toString()),
+                                Integer.parseInt(txtSecondClassPrice.getText().toString())
+                        );
+                        //Insert in to the db
+                        dataBaseManager.SaveTrainAndSeatToDatabase(train, seat);
+                    }
+                    else {
+                        Toast.makeText(getApplicationContext(),"Please fill all required fields", Toast.LENGTH_LONG).show();
+                    }
                 }
                 else{
-                    Train train = new Train(txtTrainName.getText().toString(), isBookingAvailable);
-                    //Insert in to the db
-                    dataBaseManager.SaveTrainToDatabase(train);
+                    if (txtTrainName != null){
+                        Train train = new Train(txtTrainName.getText().toString(), isBookingAvailable);
+                        //Insert in to the db
+                        dataBaseManager.SaveTrainToDatabase(train);
+                    }
+                    else {
+                        Toast.makeText(getApplicationContext(),"Please fill all required fields", Toast.LENGTH_LONG).show();
+                    }
                 }
             }
         });
