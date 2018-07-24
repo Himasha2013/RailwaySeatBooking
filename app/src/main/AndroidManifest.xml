@@ -24,7 +24,8 @@
         <activity android:name=".Activity.AddBookingActivity" />
         <activity android:name=".Activity.WeekActivity" />
         <activity android:name=".Activity.LoginActivity" />
-        <activity android:name=".Activity.AddTrainActivity"/>
+        <activity android:name=".Activity.AddTrainActivity" />
+        <activity android:name=".Activity.AddJourneyActivity"/>
     </application>
 
 </manifest>

@@ -17,8 +17,6 @@ import com.express.railway.railwayseatbooking.R;
 
 import java.util.ArrayList;
 
-import static com.express.railway.railwayseatbooking.Activity.WeekActivity.SEL_DAY;
-
 public class WeekBookingsActivity extends AppCompatActivity {
 
     RecyclerView week_bookings_rv;

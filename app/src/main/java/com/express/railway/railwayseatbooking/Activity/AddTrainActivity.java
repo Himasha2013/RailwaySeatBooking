@@ -50,25 +50,26 @@ public class AddTrainActivity extends AppCompatActivity {
         addTrainBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                Train train = new Train(txtTrainName.getText().toString(), isBookingAvailable);
+
                 //Save train details
-                if(isBookingAvailable){
-                    Train train = new Train(txtTrainName.getText().toString(), isBookingAvailable);
-                    Seat seat = new Seat(
-                            train.getTrainNo(),
-                            Integer.parseInt(txtNoOfFirstClassSeats.getText().toString()),
-                            Integer.parseInt(txtNoOfSecondClassSeats.getText().toString()),
-                            Integer.parseInt(txtFirstClassPrice.getText().toString()),
-                            Integer.parseInt(txtSecondClassPrice.getText().toString())
-                    );
-                    //Insert in to the db
-                    dataBaseManager.SaveTrainToDatabase(train);
-                    dataBaseManager.SaveSeatToDatabase(seat);
-                }
-                else{
-                    Train train = new Train(txtTrainName.getText().toString(), isBookingAvailable);
-                    //Insert in to the db
-                    dataBaseManager.SaveTrainToDatabase(train);
-                }
+//                if(isBookingAvailable){
+//                                        Seat seat = new Seat(
+//                            1,
+//                            5,
+//                            5,
+//                            5,
+//                            5
+//                    );
+//                    //Insert in to the db
+//                    dataBaseManager.SaveTrainToDatabase(train);
+//                    dataBaseManager.SaveSeatToDatabase(seat);
+//                }
+//                else{
+//                    //Insert in to the db
+//                    dataBaseManager.SaveTrainToDatabase(train);
+//                }
             }
         });
 

@@ -106,6 +106,10 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(MainActivity.this, AddTrainActivity.class);
             startActivity(intent);
         }
+        else if (id == R.id.nav_add_journey) {
+            Intent intent = new Intent(MainActivity.this, AddJourneyActivity.class);
+            startActivity(intent);
+        }
         else if (id == R.id.nav_manage) {
 
         }

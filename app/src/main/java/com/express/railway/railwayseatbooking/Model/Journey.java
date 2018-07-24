@@ -15,8 +15,7 @@ public class Journey {
     private String time;
     private boolean status;
 
-    public Journey(int journeyID, int trainNo, String origin, String destination, String day, String time, boolean status) {
-        this.journeyID = journeyID;
+    public Journey(int trainNo, String origin, String destination, String day, String time, boolean status) {
         this.trainNo = trainNo;
         this.origin = origin;
         this.destination = destination;

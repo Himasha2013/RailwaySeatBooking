@@ -3,8 +3,6 @@ package com.express.railway.railwayseatbooking.Model;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
-import java.util.Date;
-
 @Entity
 public class Reservation {
 
@@ -12,18 +10,17 @@ public class Reservation {
     private int reservationID;
     private int journeyID;
     private String date;
-    private String passangerName;
+    private String passengerName;
     private int noOfFirstClassSeats;
     private int noOfSecondClassSeats;
     private int totalBill;
 
-    public Reservation(int reservationID, int journeyID, String date, String passangerName,
+    public Reservation(int journeyID, String date, String passangerName,
                        int noOfFirstClassSeats, int noOfSecondClassSeats, int totalBill)
     {
-        this.reservationID = reservationID;
         this.journeyID = journeyID;
         this.date = date;
-        this.passangerName = passangerName;
+        this.passengerName = passangerName;
         this.noOfFirstClassSeats = noOfFirstClassSeats;
         this.noOfSecondClassSeats = noOfSecondClassSeats;
         this.totalBill = totalBill;
@@ -53,12 +50,12 @@ public class Reservation {
         this.date = date;
     }
 
-    public String getPassangerName() {
-        return passangerName;
+    public String getPassengerName() {
+        return passengerName;
     }
 
-    public void setPassangerName(String passangerName) {
-        this.passangerName = passangerName;
+    public void setPassengerName(String passengerName) {
+        this.passengerName = passengerName;
     }
 
     public int getNoOfFirstClassSeats() {
@@ -91,7 +88,7 @@ public class Reservation {
                 "reservationID=" + reservationID +
                 ", journeyID=" + journeyID +
                 ", date=" + date +
-                ", passangerName='" + passangerName + '\'' +
+                ", passengerName='" + passengerName + '\'' +
                 ", noOfFirstClassSeats=" + noOfFirstClassSeats +
                 ", noOfSecondClassSeats=" + noOfSecondClassSeats +
                 ", totalBill=" + totalBill +
