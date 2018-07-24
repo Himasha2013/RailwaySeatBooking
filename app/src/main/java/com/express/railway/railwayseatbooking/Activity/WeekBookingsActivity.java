@@ -57,35 +57,20 @@ public class WeekBookingsActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),week_name , Toast.LENGTH_LONG).show();
         }
 
-        //Get data by week name
-
-
-
-
-//        //Temp json objs
-//        Integer[] nums = {1,2,3,4};
-//        String[] names = {"train_1", "train_1", "train_1", "train_1"};
-//        boolean[] possibleBookings = {true, false, true, false};
-////        int[] images = {
-////                R.drawable.train,
-////                R.drawable.train,
-////                R.drawable.train,
-////                R.drawable.train
-////        };
-
         //Get data from the db
         ArrayList<Journey> journeyArrayList = dataBaseManager.getData();
 
         journeys = new ArrayList<>();
 
-
+        //Get data by week name
         if (journeyArrayList != null && journeyArrayList.size() > 0) {
-            this.journeys.addAll(journeyArrayList);
+            for (int i=0; journeyArrayList.size()>i ; i++){
+                if (journeyArrayList.get(i).getDay().equals(week_name)){
+                    this.journeys.add(journeyArrayList.get(i));
+                }
+            }
         }
         else {
-//            for (int i = 0; i < names.length; i++) {
-//                journeys.add(new Train(names[i], possibleBookings[i]));
-//            }
             System.out.println("ERROR FETCHING DATA");
         }
 
