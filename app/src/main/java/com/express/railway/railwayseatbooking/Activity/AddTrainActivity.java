@@ -47,12 +47,40 @@ public class AddTrainActivity extends AppCompatActivity {
         txtSecondClassPrice =  findViewById(R.id.txtSecondClassPrice);
 
 
+//        Toast.makeText(getApplicationContext(),"ARRAAAYY"+
+//                dataBaseManager.getSeatData().get(0).getTrainNo(),
+//                Toast.LENGTH_LONG).show();
+
+//        for(int i=dataBaseManager.getSeatData().size()-1 ; i>0 ; i--){
+//            Toast.makeText(getApplicationContext(),
+//                    dataBaseManager.getSeatData().get(i).getNoOfFirstClassSeats(),
+//                    Toast.LENGTH_LONG);
+//        }
+
         addTrainBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //Save train details
+                if(isBookingAvailable){
+                    Train train = new Train(txtTrainName.getText().toString(), isBookingAvailable);
+                    //dataBaseManager.SaveTrainToDatabase(train);
 
-                Train train = new Train(txtTrainName.getText().toString(), isBookingAvailable);
-                
+                    Seat seat = new Seat(
+                            1,
+                            Integer.parseInt(txtNoOfFirstClassSeats.getText().toString()),
+                            Integer.parseInt(txtNoOfSecondClassSeats.getText().toString()),
+                            Integer.parseInt(txtFirstClassPrice.getText().toString()),
+                            Integer.parseInt(txtSecondClassPrice.getText().toString())
+                    );
+                    //Insert in to the db
+                    dataBaseManager.SaveTrainAndSeatToDatabase(train, seat);
+
+                }
+                else{
+                    Train train = new Train(txtTrainName.getText().toString(), isBookingAvailable);
+                    //Insert in to the db
+                    dataBaseManager.SaveTrainToDatabase(train);
+                }
             }
         });
 

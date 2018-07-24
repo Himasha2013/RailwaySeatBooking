@@ -22,6 +22,27 @@ public class DataBaseManager {
     public DataBaseManager(Context context) {
         journeyDao = DatabaseHolder.getDatabaseInstance(context).journeyDao();
         trainDao = DatabaseHolder.getDatabaseInstance(context).trainDao();
+        seatDao = DatabaseHolder.getDatabaseInstance(context).seatDao();
+    }
+
+    public void SaveTrainAndSeatToDatabase(final Train train, final Seat seat) {
+//        SaveTrainAndSeatToDatabase saveTrainAndSeatToDatabase = new SaveTrainAndSeatToDatabase(train, seat);
+//        saveTrainAndSeatToDatabase.execute();
+
+        AsyncTask.execute(new Runnable() {
+            @Override
+            public void run() {
+                trainDao.save(train);
+                try {
+                    Thread.sleep(6000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("TRAIN NUM IS "+train.getTrainNo()+" "+train.getTrainName());
+                seat.setTrainNo(train.getTrainNo());
+                seatDao.save(seat);
+            }
+        });
     }
 
     public void saveDataToDataBase(ArrayList<Journey> arrayList) {
@@ -72,6 +93,17 @@ public class DataBaseManager {
                 new retrievedTrainDataFromDatabase();
         try {
             ArrayList<Train> es = retrievedTrainDataFromDatabase.execute().get();
+            return es;
+        } catch (InterruptedException | ExecutionException e) {
+            return new ArrayList<>();
+        }
+    }
+
+    public ArrayList<Seat> getSeatData() {
+        retrievedSeatDataFromDatabase retrievedSeatDataFromDatabase =
+                new retrievedSeatDataFromDatabase();
+        try {
+            ArrayList<Seat> es = retrievedSeatDataFromDatabase.execute().get();
             return es;
         } catch (InterruptedException | ExecutionException e) {
             return new ArrayList<>();
@@ -160,6 +192,43 @@ public class DataBaseManager {
         }
     }
 
+    private static class retrievedSeatDataFromDatabase extends AsyncTask<Void, Void, ArrayList<Seat>> {
+
+        @Override
+        protected ArrayList<Seat> doInBackground(Void... voids) {
+            return (ArrayList<Seat>) seatDao.getAll();
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<Seat> es) {
+            super.onPostExecute(es);
+        }
+    }
+
+    private static class SaveTrainAndSeatToDatabase extends AsyncTask<Void, Void, Seat> {
+
+        private Train train;
+        private Seat seat;
+
+        SaveTrainAndSeatToDatabase(Train train, Seat seat) {
+            this.train = train;
+            this.seat = seat;
+        }
+
+        @Override
+        protected Seat doInBackground(Void... voids) {
+            trainDao.save(train);
+            return null;
+
+        }
+
+        @Override
+        protected void onPostExecute(Seat seats) {
+            super.onPostExecute(seats);
+            seatDao.save(seat);
+        }
+    }
+
     private static class SaveTrainToDatabase extends AsyncTask<Void, Void, Void> {
 
         private Train train;
@@ -189,7 +258,6 @@ public class DataBaseManager {
 
         @Override
         protected Void doInBackground(Void... voids) {
-//            train.setTrainNo(456);
             seatDao.save(seat);
             return null;
 
