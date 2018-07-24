@@ -29,14 +29,14 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -98,10 +98,10 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(MainActivity.this, WeekActivity.class);
             startActivity(intent);
         }
-        else if (id == R.id.nav_make_booking) {
-            Intent intent = new Intent(MainActivity.this, AddBookingActivity.class);
-            startActivity(intent);
-        }
+//        else if (id == R.id.nav_make_booking) {
+//            Intent intent = new Intent(MainActivity.this, AddBookingActivity.class);
+//            startActivity(intent);
+//        }
         else if (id == R.id.nav_add_train) {
             Intent intent = new Intent(MainActivity.this, AddTrainActivity.class);
             startActivity(intent);
@@ -110,9 +110,9 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(MainActivity.this, AddJourneyActivity.class);
             startActivity(intent);
         }
-        else if (id == R.id.nav_manage) {
-
-        }
+//        else if (id == R.id.nav_manage) {
+//
+//        }
 //        else if (id == R.id.nav_share) {
 //
 //        } else if (id == R.id.nav_send) {

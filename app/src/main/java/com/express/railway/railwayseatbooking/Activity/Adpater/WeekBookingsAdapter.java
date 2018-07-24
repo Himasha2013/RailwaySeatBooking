@@ -53,7 +53,7 @@ public class WeekBookingsAdapter extends RecyclerView.Adapter<WeekBookingsAdapte
         ImageView image = holder.image;
 
         name.setText("Origin: "+journey.getOrigin() + "  Destination: "+journey.getDestination());
-        time.setText(journey.getTime());
+        time.setText("Time "+journey.getTime());
         //image.setImageResource(train.getImage());
     }
 
@@ -74,8 +74,7 @@ public class WeekBookingsAdapter extends RecyclerView.Adapter<WeekBookingsAdapte
             // Stores the itemView in a public final member variable that can be used
             // to access the context from any ViewHolder instance.
             super(itemView);
-//
-            //image = itemView.findViewById(R.id.FlowerImg);
+
             name = itemView.findViewById(R.id.txtFlowerName);
             price = itemView.findViewById(R.id.txtPrice);
 

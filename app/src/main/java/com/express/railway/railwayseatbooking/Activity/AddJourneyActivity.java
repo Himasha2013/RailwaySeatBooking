@@ -11,8 +11,12 @@ import android.widget.Spinner;
 
 import com.express.railway.railwayseatbooking.Database.DataBaseManager;
 import com.express.railway.railwayseatbooking.Model.Journey;
+import com.express.railway.railwayseatbooking.Model.Train;
 import com.express.railway.railwayseatbooking.R;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class AddJourneyActivity extends AppCompatActivity {
 
@@ -35,7 +39,10 @@ public class AddJourneyActivity extends AppCompatActivity {
         //Initialize database mgr
         dataBaseManager = new DataBaseManager(this);
 
-        initTrainDropDown();
+        ArrayList<Train> trains  = dataBaseManager.getTrainData();
+
+        //System.out.println(trains.size());
+
 
         trainDropDown = findViewById(R.id.train_dropdown);
         txtOrigin = findViewById(R.id.txtOrigin);
@@ -46,14 +53,41 @@ public class AddJourneyActivity extends AppCompatActivity {
         addJourneyBtn = findViewById(R.id.addJourneyBtn);
         spinnerMap = new HashMap<>();
 
+        initTrainDropDown();
+
         addJourneyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                int trainNo = Integer.parseInt(spinnerMap.get(trainDropDown.getSelectedItemPosition()));
+
+                String text = trainDropDown.getSelectedItem().toString();
+//                try {
+//                    Thread.sleep(2000);
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+
+                int train_id = 0;
+
+                for (Map.Entry<Integer, String> entry : spinnerMap.entrySet()) {
+                    if (entry.getValue().equals(text)) {
+                        train_id = entry.getKey();
+                    }
+                }
+
+                //String train = spinnerMap.get(trainDropDown.getSelectedItem());
+
+                //int trainNo = Integer.parseInt(spinnerMap.get(trainDropDown.getSelectedItem()));
+
                 boolean status = radioGroup.getCheckedRadioButtonId() == R.id.rbActive ? true : false;
 
-                Journey journey = new Journey(trainNo,txtOrigin.getText().toString(),txtDestination.getText().toString(), txtDate.getText().toString(), txtTime.getText().toString(), status);
+                Journey journey = new Journey(
+                        train_id,txtOrigin.getText().toString(),
+                        txtDestination.getText().toString(),
+                        txtDate.getText().toString(),
+                        txtTime.getText().toString(),
+                        status);
+
                 //Insert in to the db
                 dataBaseManager.SaveJourneyToDatabase(journey);
             }
@@ -61,6 +95,8 @@ public class AddJourneyActivity extends AppCompatActivity {
     }
 
     private void initTrainDropDown() {
+
+
 
         String[] trainNames = new String[dataBaseManager.getTrainData().size()];
 

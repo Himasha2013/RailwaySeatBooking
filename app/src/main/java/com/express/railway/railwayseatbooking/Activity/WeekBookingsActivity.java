@@ -52,7 +52,7 @@ public class WeekBookingsActivity extends AppCompatActivity {
         if(bd != null)
         {
             week_name = (String) bd.get("week_name");
-            Toast.makeText(getApplicationContext(),week_name , Toast.LENGTH_LONG).show();
+            //Toast.makeText(getApplicationContext(),week_name , Toast.LENGTH_LONG).show();
         }
 
         //Get data from the db
@@ -72,7 +72,6 @@ public class WeekBookingsActivity extends AppCompatActivity {
             System.out.println("ERROR FETCHING DATA");
         }
 
-        //journeys.add(new Journey(1,2,"sad", "sasdc", "yashufidhoc", "278347", true));
         WeekBookingsAdapter adapter = new WeekBookingsAdapter(this, journeys);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
 
