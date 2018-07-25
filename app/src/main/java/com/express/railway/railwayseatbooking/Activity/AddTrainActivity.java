@@ -113,7 +113,7 @@ public class AddTrainActivity extends AppCompatActivity {
                         txtTrainName.setText("");
                         rbYes.setChecked(false);
                         rbNo.setChecked(true);
-                       
+
                         Toast.makeText(getApplicationContext(),"Train added successfully!", Toast.LENGTH_LONG).show();
 
                     }
