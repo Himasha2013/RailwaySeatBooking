@@ -67,7 +67,7 @@ public class AddTrainActivity extends AppCompatActivity {
                 //Save train details
                 if(isBookingAvailable){
 
-                    if (txtTrainName != null &&
+                    if (!txtTrainName.getText().toString().isEmpty() &&
                         !txtNoOfFirstClassSeats.getText().toString().isEmpty() &&
                         !txtNoOfSecondClassSeats.getText().toString().isEmpty() &&
                         !txtFirstClassPrice.getText().toString().isEmpty() &&
@@ -85,35 +85,42 @@ public class AddTrainActivity extends AppCompatActivity {
                         );
                         //Insert in to the db
                         dataBaseManager.SaveTrainAndSeatToDatabase(train, seat);
+
+                        txtTrainName.setText("");
+                        txtNoOfFirstClassSeats.setText("");
+                        txtNoOfSecondClassSeats.setText("");
+                        txtFirstClassPrice.setText("");
+                        txtSecondClassPrice.setText("");
+                        rbYes.setChecked(false);
+                        rbNo.setChecked(true);
+                        txtNoOfFirstClassSeats.setVisibility(View.INVISIBLE);
+                        txtNoOfSecondClassSeats.setVisibility(View.INVISIBLE);
+                        txtFirstClassPrice.setVisibility(View.INVISIBLE);
+                        txtSecondClassPrice.setVisibility(View.INVISIBLE);
+
+                        Toast.makeText(getApplicationContext(),"Train added successfully!", Toast.LENGTH_LONG).show();
                     }
                     else {
                         Toast.makeText(getApplicationContext(),"Please fill all required fields", Toast.LENGTH_LONG).show();
                     }
                 }
                 else{
-                    if (txtTrainName != null){
+                    if (!txtTrainName.getText().toString().isEmpty()){
                         Train train = new Train(txtTrainName.getText().toString(), isBookingAvailable);
                         //Insert in to the db
                         dataBaseManager.SaveTrainToDatabase(train);
+
+                        txtTrainName.setText("");
+                        rbYes.setChecked(false);
+                        rbNo.setChecked(true);
+                       
+                        Toast.makeText(getApplicationContext(),"Train added successfully!", Toast.LENGTH_LONG).show();
+
                     }
                     else {
                         Toast.makeText(getApplicationContext(),"Please fill all required fields", Toast.LENGTH_LONG).show();
                     }
                 }
-
-                txtTrainName.setText("");
-                txtNoOfFirstClassSeats.setText("");
-                txtNoOfSecondClassSeats.setText("");
-                txtFirstClassPrice.setText("");
-                txtSecondClassPrice.setText("");
-                rbYes.setChecked(false);
-                rbNo.setChecked(true);
-                txtNoOfFirstClassSeats.setVisibility(View.INVISIBLE);
-                txtNoOfSecondClassSeats.setVisibility(View.INVISIBLE);
-                txtFirstClassPrice.setVisibility(View.INVISIBLE);
-                txtSecondClassPrice.setVisibility(View.INVISIBLE);
-
-                Toast.makeText(getApplicationContext(),"Train added successfully!", Toast.LENGTH_LONG).show();
             }
         });
 
