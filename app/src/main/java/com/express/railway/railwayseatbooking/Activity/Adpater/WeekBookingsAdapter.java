@@ -52,7 +52,7 @@ public class WeekBookingsAdapter extends RecyclerView.Adapter<WeekBookingsAdapte
         TextView time = holder.price;
         ImageView image = holder.image;
 
-        name.setText("Origin: "+journey.getOrigin() + "  Destination: "+journey.getDestination());
+        name.setText("To: "+journey.getOrigin() + "  From: "+journey.getDestination());
         time.setText("Time "+journey.getTime());
         //image.setImageResource(train.getImage());
     }

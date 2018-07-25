@@ -54,7 +54,6 @@
         android:hint="To"
         android:inputType="textCapWords" />
 
-
     <!--<EditText-->
         <!--android:id="@+id/txtDate"-->
         <!--android:layout_width="match_parent"-->
