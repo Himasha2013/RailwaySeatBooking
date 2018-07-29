@@ -22,10 +22,8 @@ import com.express.railway.railwayseatbooking.Utils.LetterImageView;
 
 public class WeekActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
     private ListView listView;
     public static SharedPreferences sharedPreferences;
-    public static String SEL_DAY;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,20 +31,13 @@ public class WeekActivity extends AppCompatActivity {
         setContentView(R.layout.activity_weeklist);
 
         setupUIViews();
-        //initToolbar();
-
         setupListView();
     }
 
     private void setupUIViews(){
-        //toolbar = (Toolbar)findViewById(R.id.ToolbarWeek);
+
         listView = (ListView)findViewById(R.id.lvWeek);
         sharedPreferences = getSharedPreferences("MY_DAY", MODE_PRIVATE);
-    }
-    private void initToolbar(){
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Week");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
     private void setupListView(){
@@ -65,7 +56,6 @@ public class WeekActivity extends AppCompatActivity {
                                 new Intent(WeekActivity.this, WeekBookingsActivity.class)
                                         .putExtra("week_name", "Monday")
                         );
-//                        sharedPreferences.edit().putString(SEL_DAY, "Monday").apply();
                         break;
                     }
                     case 1: {
@@ -73,7 +63,6 @@ public class WeekActivity extends AppCompatActivity {
                                         new Intent(WeekActivity.this, WeekBookingsActivity.class)
                                                 .putExtra("week_name", "Tuesday")
                                 );
-                        //sharedPreferences.edit().putString(SEL_DAY, "Tuesday").apply();
                         break;
                     }
                     case 2: {
@@ -81,7 +70,6 @@ public class WeekActivity extends AppCompatActivity {
                                 new Intent(WeekActivity.this, WeekBookingsActivity.class)
                                         .putExtra("week_name", "Wednesday")
                         );
-                        //sharedPreferences.edit().putString(SEL_DAY, "Wednesday").apply();
                         break;
                     }
                     case 3: {
@@ -89,7 +77,6 @@ public class WeekActivity extends AppCompatActivity {
                                 new Intent(WeekActivity.this, WeekBookingsActivity.class)
                                         .putExtra("week_name", "Thursday")
                         );
-                        //sharedPreferences.edit().putString(SEL_DAY, "Thursday").apply();
                         break;
                     }
                     case 4: {
@@ -97,7 +84,6 @@ public class WeekActivity extends AppCompatActivity {
                                 new Intent(WeekActivity.this, WeekBookingsActivity.class)
                                         .putExtra("week_name", "Friday")
                         );
-                        //sharedPreferences.edit().putString(SEL_DAY, "Friday").apply();
                         break;
                     }
                     case 5: {
@@ -105,7 +91,6 @@ public class WeekActivity extends AppCompatActivity {
                                 new Intent(WeekActivity.this, WeekBookingsActivity.class)
                                         .putExtra("week_name", "Saturday")
                         );
-                        //sharedPreferences.edit().putString(SEL_DAY, "Saturday").apply();
                         break;
                     }
                     default:break;
@@ -119,7 +104,7 @@ public class WeekActivity extends AppCompatActivity {
 
         private int resource;
         private LayoutInflater layoutInflater;
-        private String[] week = new String[]{};
+        private String[] week;
 
         public WeekAdapter(Context context, int resource, String[] objects) {
             super(context, resource, objects);

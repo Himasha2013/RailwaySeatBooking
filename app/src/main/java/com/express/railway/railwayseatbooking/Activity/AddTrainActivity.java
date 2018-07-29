@@ -50,17 +50,6 @@ public class AddTrainActivity extends AppCompatActivity {
         txtFirstClassPrice =  findViewById(R.id.txtFirstClassPrice);
         txtSecondClassPrice =  findViewById(R.id.txtSecondClassPrice);
 
-
-//        Toast.makeText(getApplicationContext(),"ARRAAAYY"+
-//                dataBaseManager.getSeatData().get(0).getTrainNo(),
-//                Toast.LENGTH_LONG).show();
-
-//        for(int i=dataBaseManager.getSeatData().size()-1 ; i>0 ; i--){
-//            Toast.makeText(getApplicationContext(),
-//                    dataBaseManager.getSeatData().get(i).getNoOfFirstClassSeats(),
-//                    Toast.LENGTH_LONG);
-//        }
-
         addTrainBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

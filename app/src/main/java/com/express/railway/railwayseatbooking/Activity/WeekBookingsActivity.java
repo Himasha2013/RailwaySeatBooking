@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.Toast;
 
 import com.express.railway.railwayseatbooking.Activity.Adpater.WeekBookingsAdapter;
 import com.express.railway.railwayseatbooking.Database.DataBaseManager;
@@ -20,7 +19,6 @@ import java.util.ArrayList;
 public class WeekBookingsActivity extends AppCompatActivity {
 
     RecyclerView week_bookings_rv;
-    LinearLayoutManager layoutManager;
     ArrayList<Journey> journeys;
     SharedPreferences preferences;
 
@@ -52,7 +50,6 @@ public class WeekBookingsActivity extends AppCompatActivity {
         if(bd != null)
         {
             week_name = (String) bd.get("week_name");
-            //Toast.makeText(getApplicationContext(),week_name , Toast.LENGTH_LONG).show();
         }
 
         //Get data from the db

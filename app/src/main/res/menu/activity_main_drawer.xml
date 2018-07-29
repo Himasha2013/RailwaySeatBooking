@@ -16,6 +16,9 @@
         <item
             android:id="@+id/nav_add_journey"
             android:title="Add Journey" />
+        <item
+            android:id="@+id/nav_add_reservation"
+            android:title="Add Reservation" />
         <!--<item-->
             <!--android:id="@+id/nav_manage"-->
             <!--android:icon="@drawable/ic_menu_manage"-->

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.AsyncTask;
 
 import com.express.railway.railwayseatbooking.Database.Dao.JourneyDao;
+import com.express.railway.railwayseatbooking.Database.Dao.ReservationDao;
 import com.express.railway.railwayseatbooking.Database.Dao.SeatDao;
 import com.express.railway.railwayseatbooking.Database.Dao.TrainDao;
 import com.express.railway.railwayseatbooking.Model.Journey;
@@ -18,16 +19,17 @@ public class DataBaseManager {
     private static JourneyDao journeyDao;
     private static TrainDao trainDao;
     private static SeatDao seatDao;
+    private static ReservationDao reservationDao;
+
 
     public DataBaseManager(Context context) {
         journeyDao = DatabaseHolder.getDatabaseInstance(context).journeyDao();
         trainDao = DatabaseHolder.getDatabaseInstance(context).trainDao();
         seatDao = DatabaseHolder.getDatabaseInstance(context).seatDao();
+        reservationDao = DatabaseHolder.getDatabaseInstance(context).reservationDao();
     }
 
     public void SaveTrainAndSeatToDatabase(final Train train, final Seat seat) {
-//        SaveTrainAndSeatToDatabase saveTrainAndSeatToDatabase = new SaveTrainAndSeatToDatabase(train, seat);
-//        saveTrainAndSeatToDatabase.execute();
 
         AsyncTask.execute(new Runnable() {
             @Override
@@ -71,8 +73,8 @@ public class DataBaseManager {
     }
 
 
-    public void remove(Journey flower) {
-        RemoveItemFromDataBase removeItemFromDataBase = new RemoveItemFromDataBase(flower);
+    public void remove(Journey journey) {
+        RemoveItemFromDataBase removeItemFromDataBase = new RemoveItemFromDataBase(journey);
         removeItemFromDataBase.execute();
     }
 
@@ -122,17 +124,17 @@ public class DataBaseManager {
     private static class SaveDataToDatabase extends AsyncTask<Void, Void, Void> {
 
 
-        private ArrayList<Journey> flowersArrayList;
+        private ArrayList<Journey> journeyArrayList;
 
 
         SaveDataToDatabase( ArrayList<Journey> entry) {
 
-            this.flowersArrayList = entry;
+            this.journeyArrayList = entry;
         }
 
         @Override
         protected Void doInBackground(Void... voids) {
-            journeyDao.saveAll(flowersArrayList);
+            journeyDao.saveAll(journeyArrayList);
             return null;
 
         }
@@ -140,16 +142,16 @@ public class DataBaseManager {
 
     private static class SaveItemToDatabase extends AsyncTask<Void, Void, Void> {
 
-        private Journey flower;
+        private Journey journey;
 
 
-        SaveItemToDatabase(Journey flower) {
-            this.flower = flower;
+        SaveItemToDatabase(Journey journey) {
+            this.journey = journey;
         }
 
         @Override
         protected Void doInBackground(Void... voids) {
-            journeyDao.save(flower);
+            journeyDao.save(journey);
             return null;
 
         }
@@ -157,16 +159,16 @@ public class DataBaseManager {
 
     private static class RemoveItemFromDataBase extends AsyncTask<Void, Void, Void> {
 
-        private Journey flower;
+        private Journey journey;
 
 
         RemoveItemFromDataBase(Journey flower) {
-            this.flower = flower;
+            this.journey = flower;
         }
 
         @Override
         protected Void doInBackground(Void... voids) {
-            journeyDao.delete(flower);
+            journeyDao.delete(journey);
             return null;
         }
     }

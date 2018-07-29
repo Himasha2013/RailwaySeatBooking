@@ -6,31 +6,28 @@ import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
 
-import com.express.railway.railwayseatbooking.Model.Journey;
+import com.express.railway.railwayseatbooking.Model.Reservation;
 
 import java.util.List;
 
 @Dao
-public interface JourneyDao {
+public interface ReservationDao {
 
-
-    @Query("SELECT * FROM Journey")
-    List<Journey> getAll();
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void saveAll(List<Journey> journeyArrayList);
+    @Query("SELECT * FROM Reservation")
+    List<Reservation> getAll();
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void save(Journey journey);
+    void saveAll(List<Reservation> reservationArrayList);
 
-    @Query("SELECT COUNT() FROM Journey")
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    void save(Reservation reservation);
+
+    @Query("SELECT COUNT() FROM Reservation")
     int getNumberOfRows();
 
-    @Query("DELETE FROM Journey")
+    @Query("DELETE FROM Reservation")
     void clearAll();
 
     @Delete
-    void delete(Journey journey);
-
-
+    void delete(Reservation reservation);
 }

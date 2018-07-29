@@ -43,11 +43,6 @@ public class AddJourneyActivity extends AppCompatActivity {
         //Initialize database mgr
         dataBaseManager = new DataBaseManager(this);
 
-        ArrayList<Train> trains  = dataBaseManager.getTrainData();
-
-        //System.out.println(trains.size());
-
-
         trainDropDown = findViewById(R.id.train_dropdown);
         daysDropDown = findViewById(R.id.date_dropdown);
         txtOrigin = findViewById(R.id.txtOrigin);
@@ -82,10 +77,6 @@ public class AddJourneyActivity extends AppCompatActivity {
                             train_id = entry.getKey();
                         }
                     }
-
-                    //String train = spinnerMap.get(trainDropDown.getSelectedItem());
-
-                    //int trainNo = Integer.parseInt(spinnerMap.get(trainDropDown.getSelectedItem()));
 
                     boolean status = radioGroup.getCheckedRadioButtonId() == R.id.rbActive ? true : false;
 

@@ -5,11 +5,14 @@ import android.os.Bundle;
 
 import com.express.railway.railwayseatbooking.R;
 
-public class DayActivity extends AppCompatActivity {
+public class AddReservationActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_day);
+        setContentView(R.layout.activity_add_reservation);
+
+
+
     }
 }
