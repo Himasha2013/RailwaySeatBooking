@@ -7,33 +7,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.express.railway.railwayseatbooking.Activity.AddJourneyActivity;
 import com.express.railway.railwayseatbooking.Activity.AddReservationActivity;
-import com.express.railway.railwayseatbooking.Activity.LoginActivity;
-import com.express.railway.railwayseatbooking.Activity.MainActivity;
-import com.express.railway.railwayseatbooking.Activity.WeekActivity;
 import com.express.railway.railwayseatbooking.Database.DataBaseManager;
 import com.express.railway.railwayseatbooking.Model.Journey;
-import com.express.railway.railwayseatbooking.Model.Reservation;
-import com.express.railway.railwayseatbooking.Model.Train;
 import com.express.railway.railwayseatbooking.R;
 
 import java.util.ArrayList;
 
 public class WeekBookingsAdapter extends RecyclerView.Adapter<WeekBookingsAdapter.ViewHolder> implements View.OnClickListener{
 
-    private Context mContext;
     private ArrayList<Journey> mList;
     private DataBaseManager dataBaseManager;
-    Button btnReservation;
-    TextView txtTrainName, txtJourney, txtTime;
 
     public WeekBookingsAdapter(Context context, ArrayList<Journey> list) {
-        mContext = context;
         mList = list;
     }
 
@@ -62,12 +49,17 @@ public class WeekBookingsAdapter extends RecyclerView.Adapter<WeekBookingsAdapte
         Journey journey = mList.get(position);
 
         // Set item views based on your views and data model
-        txtTrainName = holder.trainName;
-        txtJourney = holder.journey;
-        txtTime = holder.time;
-        btnReservation = holder.reservation;
+       final TextView txtTrainName = holder.trainName;
+       final TextView txtOrigin = holder.origin;
+       final TextView txtDestination = holder.destination;
+       final TextView txtTime = holder.time;
+       final Button btnReservation = holder.reservation;
+       final int journeyId, trainNo;
 
-        txtJourney.setText("To: "+journey.getOrigin() + "  From: "+journey.getDestination());
+        txtOrigin.setText("From: "+journey.getOrigin());
+        txtDestination.setText("To: "+journey.getDestination());
+        journeyId = journey.getJourneyID();
+        trainNo = journey.getTrainNo();
         txtTime.setText("Time: "+journey.getTime());
 
         for(int i=0; i < dataBaseManager.getTrainData().size(); i++){
@@ -82,6 +74,20 @@ public class WeekBookingsAdapter extends RecyclerView.Adapter<WeekBookingsAdapte
                 }
             }
         }
+
+        btnReservation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), AddReservationActivity.class);
+                intent.putExtra("JOURNEY_ID",journeyId);
+                intent.putExtra("JOURNEY",txtOrigin.getText() + "  " + txtDestination.getText());
+                intent.putExtra("TRAIN_NO",trainNo);
+                intent.putExtra("TRAIN_NAME",txtTrainName.getText());
+                intent.putExtra("TIME",txtTime.getText());
+                intent.putExtra("FIRST_CLASS_PRICE",txtTime.getText());
+                view.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -91,18 +97,13 @@ public class WeekBookingsAdapter extends RecyclerView.Adapter<WeekBookingsAdapte
 
     @Override
     public void onClick(View view) {
-        if (view.getId() == btnReservation.getId()){
-            Intent intent = new Intent(view.getContext(), AddReservationActivity.class);
-            intent.putExtra("JOURNEY",txtJourney.getText().toString());
-            intent.putExtra("TIME",txtTime.getText().toString());
-            view.getContext().startActivity(intent);
-        }
+
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         // Your holder should contain a member variable
         // for any view that will be set as you render a row
-        public TextView trainName, journey, time;
+        public TextView trainName, origin, destination, time;
         public Button reservation;
 
         // We also create a constructor that accepts the entire item row
@@ -113,7 +114,8 @@ public class WeekBookingsAdapter extends RecyclerView.Adapter<WeekBookingsAdapte
             super(itemView);
 
             trainName= itemView.findViewById(R.id.txtTrainName);
-            journey = itemView.findViewById(R.id.txtJourney);
+            origin = itemView.findViewById(R.id.txtOrigin);
+            destination = itemView.findViewById(R.id.txtDestination);
             time = itemView.findViewById(R.id.txtTime);
             reservation = itemView.findViewById(R.id.btnReservation);
 

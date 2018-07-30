@@ -16,26 +16,6 @@
         <item
             android:id="@+id/nav_add_journey"
             android:title="Add Journey" />
-        <item
-            android:id="@+id/nav_add_reservation"
-            android:title="Add Reservation" />
-        <!--<item-->
-            <!--android:id="@+id/nav_manage"-->
-            <!--android:icon="@drawable/ic_menu_manage"-->
-            <!--android:title="Tools" />-->
     </group>
-
-    <!--<item android:title="Communicate">-->
-        <!--&lt;!&ndash;<menu>&ndash;&gt;-->
-            <!--&lt;!&ndash;<item&ndash;&gt;-->
-                <!--&lt;!&ndash;android:id="@+id/nav_share"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:icon="@drawable/ic_menu_share"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:title="Share" />&ndash;&gt;-->
-            <!--&lt;!&ndash;<item&ndash;&gt;-->
-                <!--&lt;!&ndash;android:id="@+id/nav_send"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:icon="@drawable/ic_menu_send"&ndash;&gt;-->
-                <!--&lt;!&ndash;android:title="Send" />&ndash;&gt;-->
-        <!--&lt;!&ndash;</menu>&ndash;&gt;-->
-    <!--</item>-->
 
 </menu>

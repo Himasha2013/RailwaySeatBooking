@@ -98,10 +98,6 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(MainActivity.this, AddJourneyActivity.class);
             startActivity(intent);
         }
-        else if (id == R.id.nav_add_reservation) {
-            Intent intent = new Intent(MainActivity.this, AddReservationActivity.class);
-            startActivity(intent);
-        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

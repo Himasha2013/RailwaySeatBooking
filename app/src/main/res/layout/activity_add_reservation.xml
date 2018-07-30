@@ -24,93 +24,78 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:textSize="15sp"
-            android:text="Train Name: "/>
-        <Spinner
-            android:id="@+id/train_dropdown"
+            android:id="@+id/txtReservationTrainName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
-            android:spinnerMode="dropdown"/>
-
+            android:textSize="20sp" />
     </LinearLayout>
 
-
-    <EditText
-        android:id="@+id/txtOrigin"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorPrimaryDark"
-        android:hint="From"
-        android:inputType="textCapWords" />
-
-    <EditText
-        android:id="@+id/txtDestination"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/colorPrimaryDark"
-        android:hint="To"
-        android:inputType="textCapWords" />
-
-    <!--<EditText-->
-    <!--android:id="@+id/txtDate"-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:ems="10"-->
-    <!--android:hint="Date"-->
-    <!--android:inputType="text" />-->
-
-    <Spinner
-        android:id="@+id/date_dropdown"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-
-        android:spinnerMode="dropdown"/>
-
-    <EditText
-        android:id="@+id/txtTime"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Time"
-        android:inputType="time" />
-
     <LinearLayout
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
+            android:id="@+id/txtReservationJourney"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="Status: "
-            android:textSize="15sp" />
+            android:textSize="20sp" />
+    </LinearLayout>
 
-        <RadioGroup
-            android:id="@+id/rbgStatus"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtReservationTime"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:orientation="horizontal">
+            android:textSize="20sp" />
+    </LinearLayout>
 
-            <RadioButton
-                android:id="@+id/rbActive"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:checked="true"
-                android:text="Active" />
+    <EditText
+        android:id="@+id/txtReservationDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Date"
+        android:inputType="date" />
 
-            <RadioButton
-                android:id="@+id/rbInactive"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Inactive" />
-        </RadioGroup>
+    <EditText
+        android:id="@+id/txtReservationPassengerName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Passenger Name"
+        android:inputType="date" />
 
+    <EditText
+        android:id="@+id/txtReservationNoOfFirstClassSeats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="No of First Class Seats"
+        android:inputType="number" />
+
+    <EditText
+        android:id="@+id/txtReservationNoOfSecondClassSeats"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="No of Second Class Seats"
+        android:inputType="number" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/txtReservationTotalBill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp" />
     </LinearLayout>
 
     <Space
@@ -118,12 +103,12 @@
         android:layout_height="20dp" />
 
     <Button
-        android:id="@+id/addJourneyBtn"
+        android:id="@+id/addReservationBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/button_background"
         android:elevation="4dp"
-        android:text="Save"
+        android:text="Reserve"
         android:textColor="#fff" />
 </LinearLayout>
